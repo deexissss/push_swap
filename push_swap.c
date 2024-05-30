@@ -1,3 +1,6 @@
+
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +9,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:09:25 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/05/17 16:18:02 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/05/30 09:20:45 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,48 +45,15 @@ void	sort_three(stack *stack)
 	}
 }
 
-void	sort_five(stack *stack1, stack *stack2)
+int	ft_stacklast(stack *stack)
 {
-	if (is_empty(stack1))
-		return;
-	ft_push(stack1, stack2);
-	ft_push(stack1, stack2);
-	sort_three(stack1);
-	while (!is_empty(stack2))
-	{
-		int val = remove(stack2);
-		if (val < stack1->top->data)
-		{
-			add_node(stack1, val);
-		}
-		else
-		{
-			int temp1 = remove(stack1);
-			if (is_empty(stack1) || val < stack1->top->data)
-			{
-				add_node(stack1, val);
-				add_node(stack1, temp1);
-			}
-			else
-			{
-				int temp2 = remove(stack1);
-				if (is_empty(stack1) || val < stack1->top->data)
-				{
-					add_node(stack1, val);
-					add_node(stack1, temp2);
-					add_node(stack1, temp1);
-				}
-				else
-				{
-					add_node(stack1, val);
-					add_node(stack1, temp2);
-					add_node(stack1, temp1);
-				}
-			}
-		}
-	}
+	if (stack -> top == NULL)
+		return 0;
+	node *current = stack -> top;
+	while (current -> next != NULL)
+		current = current -> next;
+	return current -> data;
 }
-
 
 int	main(int argc, char **argv)
 {
@@ -109,9 +79,12 @@ int	main(int argc, char **argv)
 		}
 		ft_printf("before modification\n");
 		display_stack(stack_a);
-		sort_three(stack_a);
-		ft_printf("apres tri\n");
+		stack_division(stack_a, stack_b);
+		ft_printf("apres tri\n stack a \n");
 		display_stack(stack_a);
+		ft_printf("apres tri\n stack b \n");
+                display_stack(stack_b);
+
 	}
 	while (!is_empty(stack_a))
 		remove(stack_a);

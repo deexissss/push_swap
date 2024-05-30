@@ -6,7 +6,7 @@
 #    By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 14:33:47 by tjehaes           #+#    #+#              #
-#    Updated: 2024/05/15 15:25:23 by tjehaes          ###   ########.fr        #
+#    Updated: 2024/05/21 15:02:10 by tjehaes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ PINK := \033[1;35m
 BLUE2 := \033[0;36m
 NOCOLOR := \033[0m
 
-SRC = push_swap.c
+SRC = push_swap.c operations.c operations2.c stack_utils.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
