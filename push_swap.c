@@ -1,6 +1,3 @@
-
-
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -9,41 +6,11 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:09:25 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/05/30 09:20:45 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/04 14:55:38 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
-void	sort_three(stack *stack)
-{
-	int	nb1;
-	int	nb2;
-	int	nb3;
-
-	nb1 = stack -> top -> data;
-	nb2 = stack -> top -> next -> data;
-	nb3 = stack -> top -> next -> next -> data;
-	if (is_empty(stack) || stack -> top -> next == NULL || stack -> top -> next -> next == NULL)
-		return;
-	if (nb1 > nb2 && nb2 < nb3 && nb1 > nb3) //3_1_2
-		ft_rotate(stack);
-	else if (nb1 > nb2 && nb2 > nb3 && nb1 > nb3) //3_2_1
-	{
-		ft_swap(stack);
-		ft_reverse_rotate(stack);
-	}
-	else if (nb1 < nb2 && nb2 > nb3 && nb1 > nb3) //2_3_1
-		ft_reverse_rotate(stack);
-	else if (nb1 > nb2 && nb2 < nb3 && nb1 < nb3) //2_1_3
-		ft_swap(stack);
-	else if (nb1 < nb2 && nb2 > nb3 && nb1 < nb3) //1_3_2
-	{
-		ft_swap(stack);
-		ft_rotate(stack);
-	}
-}
 
 int	ft_stacklast(stack *stack)
 {
@@ -74,16 +41,17 @@ int	main(int argc, char **argv)
 		while (i + 1 <= argc)
 		{
 			nb = ft_atoi(argv[i]);
-			add_node(stack_a, nb);
+			add_node_end(stack_a, nb);
 			i++;
 		}
 		ft_printf("before modification\n");
 		display_stack(stack_a);
-		stack_division(stack_a, stack_b);
-		ft_printf("apres tri\n stack a \n");
+		ft_printf("the max in the list is %i", find_max(stack_a));
+		ft_printf("the min i the list is %i", find_min(stack_a));
+		ft_printf("\napres tri\n stack a \n");
 		display_stack(stack_a);
-		ft_printf("apres tri\n stack b \n");
-                display_stack(stack_b);
+		//ft_printf("apres tri\n stack b \n");
+                //display_stack(stack_b);
 
 	}
 	while (!is_empty(stack_a))
