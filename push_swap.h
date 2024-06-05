@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:34:09 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 14:16:35 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 14:17:57 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,51 +21,66 @@
 # include "z_printf/ft_printf.h"
 # include "z_libft/libft.h"
 
-typedef struct	node
+typedef struct node
 {
-	int	index;
-	int	data;
-	int	push_cost;
-	bool	above_median;
-	bool	cheapest;
+	int			index;
+	int			data;
+	int			push_cost;
+	bool		above_median;
+	bool		cheapest;
 	struct node	*next;
 	struct node	*prev;
 	struct node	*target;
-}	node;
+}	t_node;
 
-typedef struct	stack
+typedef struct stack
 {
-	node*	top;
-}	stack;
+	t_node	*top;
+}	t_stack;
 
-node	*create_new_node(int data);
-void	init_stack(stack *stack);
-int	is_empty(stack *stack);
-void	add_node(stack *stack, int data);
-int	remove(stack *stack);
-void	move_node(stack *stack1, stack *stack2);
-void	display_stack(stack *stack);
-void	sa(stack *stack);
-void	sb(stack *stack);
-void	ss(stack *stacka, stack *stackb);
-void	ra(stack *stack);
-void	rb(stack *stack);
-void	rr(stack *stacka, stack *stackb);
-void	rra(stack *stack);
-void	rrb(stack *stack);
-void	rrr(stack *stacka, stack *stackb);
-void	pa(stack *stacka, stack *stackb);
-void	pb(stack *stacka, stack *stackb);
-int	ft_checksorted(stack *stack);
-int	stack_size(stack *stack);
-void	sort_three(stack *stack);
-void	stack_division(stack *stack1, stack *stack2);
-node *get_last_node(stack *stack);
-void    add_node_end(stack *stack, int data);
-int     find_max(stack *stack);
-int	find_min(stack *stack);
-void	current_index(stack *stack);
-void	init_nodes_1(stack *stack1, stack *stack2);
+/*OPERATIONS*/
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *stacka, t_stack *stackb);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack *stacka, t_stack *stackb);
+void	rra(t_stack *stack);
+void	rrb(t_stack *stack);
+void	rrr(t_stack *stacka, t_stack *stackb);
+void	pa(t_stack *stacka, t_stack *stackb);
+void	pb(t_stack *stacka, t_stack *stackb);
+void	both_reverse_rotate(t_stack *stack1, t_stack *stack2, t_node *cheapest);
+void	both_rotate(t_stack *stack1, t_stack *stack2, t_node *cheapest);
+
+/*STACK UTILS*/
+
+t_node	*create_new_node(int data);
+t_node	*get_last_node(t_stack *stack);
+t_node	*get_cheapest(t_stack *stack);
+void	init_stack(t_stack *stack);
+void	add_node_end(t_stack *stack, int data);
+void	add_node(t_stack *stack, int data);
+void	move_node(t_stack *stack1, t_stack *stack2);
+void	display_stack(t_stack *stack);
+int		ft_checksorted(t_stack *stack);
+int		stack_size(t_stack *stack);
+int		find_max(t_stack *stack);
+int		find_min(t_stack *stack);
+int		ft_stacklast(t_stack *stack);
+int		is_empty(t_stack *stack);
+int		ft_remove(t_stack *stack);
+
+/*SORT*/
+void	sort_three(t_stack *stack);
+void	stack_division(t_stack *stack1, t_stack *stack2);
+void	current_index(t_stack *stack);
+void	init_nodes_1(t_stack *stack1, t_stack *stack2);
+void	init_nodes_2(t_stack *stack1, t_stack *stack2);
+void	push_preparation(t_stack *stack, char stack_name);
+void	set_cheapest_nb(t_stack *stack);
+void	min_to_top(t_stack *stack1);
+void	move_a_to_b(t_stack *stack1, t_stack *stack2);
+void	move_b_to_a(t_stack *stack1, t_stack *stack2);
 
 #endif
-

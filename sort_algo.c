@@ -6,58 +6,69 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 09:56:42 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/03 10:46:36 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 14:09:37 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_division(stack *stack1, stack *stack2)
+void	both_rotate(t_stack *stack1, t_stack *stack2, t_node *cheapest)
 {
-	stack	*temp;
-	int	min;
-	int	max;
-	node	*min_n;
-	node	*max_n;
+	t_node	*current1;
+	t_node	*current2;
 
-	min = 0;
-	max = 0;
-	ft_push(stack1, stack2);
-	ft_push(stack1, stack2);
-	if (stack2 -> top -> data < stack2 -> top -> next -> data)
-	{
-		ft_swap(stack2);
-	}
-	max = stack2 -> top -> data;
-	min = stack2 -> top -> next -> data;
-	while (stack_size(stack1) > 3 && !ft_checksorted(stack1))
-	/*{
-		min_n = get_last_node(stack2);
-		min = min_n -> data;
-		max_n = stack2 -> top;
-		max = max_n -> data;
-		if (stack1 -> top -> data < min)
-		{
-			ft_push(stack1, stack2);
-			ft_rotate(stack2);
-		}
-		else if (stack1 -> top -> data > max)
-			ft_push(stack1, stack2);
-		else if (stack1 -> top -> data > min && stack1 -> top -> data < max)
-		{
-			ft_push(stack1, stack2);
-			ft_swap(stack2);
-		}
-	}*/
-	{
-		min_n = stack1 -> top;
-		max_n = stack2 -> top;
-		while (min_n > max_n)
-			max_n = max_n -> next;
-		ft_push(stack1, stack2);
-	}
-	sort_three(stack1);
-	while (stack_size(stack2) > 0)
-		ft_push(stack2, stack1);
+	current1 = stack1 -> top;
+	current2 = stack2 -> top;
+	while (current2 != cheapest -> target && current1 != cheapest)
+		rr(stack1, stack2);
+	current_index(stack1);
+	current_index(stack2);
+}
 
+void	both_reverse_rotate(t_stack *stack1, t_stack *stack2, t_node *cheapest)
+{
+	t_node	*current1;
+	t_node	*current2;
+
+	current1 = stack1 -> top;
+	current2 = stack2 -> top;
+	while (current2 != cheapest -> target && current1 != cheapest)
+		rrr(stack1, stack2);
+	current_index(stack1);
+	current_index(stack2);
+}
+
+void	move_a_to_b(t_stack *stack1, t_stack *stack2)
+{
+	t_node	*cheapest;
+
+	cheapest = get_cheapest(stack1);
+	if (cheapest -> above_median && cheapest -> target -> above_median)
+		both_rotate(stack1, stack2, cheapest);
+	else if (!(cheapest -> above_median) && !(cheapest -> target -> above_median))
+		both_reverse_rotate(stack1, stack2, cheapest);
+	push_preparation(stack1, 'a');
+	push_preparation(stack2, 'b');
+	pb(stack1, stack2);
+}
+
+void	move_b_to_a(t_stack *stack1, t_stack *stack2)
+{
+	push_preparation(stack1, 'a');
+	pa(stack2, stack1);
+}
+
+void	min_to_top(t_stack *stack)
+{
+	t_node	*current;
+
+	current = stack -> top;
+	while (current && current -> data != find_min(stack))
+	{
+		if (find_min(stack) > stack_size(stack) / 2)
+			ra(stack);
+		else
+			rra(stack);
+		current = stack -> top;
+	}
 }

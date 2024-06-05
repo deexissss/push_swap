@@ -6,17 +6,17 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 11:49:29 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/03 10:37:59 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 09:46:42 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-node	*create_new_node(int data)
+t_node	*create_new_node(int data)
 {
-	node	*new_node;
+	t_node	*new_node;
 
-	new_node = malloc(sizeof(node));
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 	{
 		ft_printf("memory allocation failed \n");
@@ -27,21 +27,21 @@ node	*create_new_node(int data)
 	return (new_node);
 }
 
-void	init_stack(stack *stack)
+void	init_stack(t_stack *stack)
 {
 	stack -> top = NULL;
 }
 
-int	is_empty(stack *stack)
+int	is_empty(t_stack *stack)
 {
 	if (stack -> top == NULL)
 		return (1);
 	return (0);
 }
 
-void	add_node(stack *stack, int data)
+void	add_node(t_stack *stack, int data)
 {
-	node	*new_node;
+	t_node	*new_node;
 
 	new_node = create_new_node(data);
 	if (!is_empty(stack))
@@ -49,9 +49,9 @@ void	add_node(stack *stack, int data)
 	stack -> top = new_node;
 }
 
-int	remove(stack *stack)
+int	ft_remove(t_stack *stack)
 {
-	node	*temp;
+	t_node	*temp;
 	int		top_data;
 
 	if (is_empty(stack))

@@ -6,16 +6,16 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 11:19:51 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 11:51:07 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 08:22:48 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rotate(stack	*stack)
+void	ft_rotate(t_stack *stack)
 {
-	node	*top_nb;
-	node	*bottom_nb;
+	t_node	*top_nb;
+	t_node	*bottom_nb;
 
 	if (stack -> top == NULL || stack -> top -> next == NULL)
 		return ;
@@ -28,19 +28,19 @@ void	ft_rotate(stack	*stack)
 	bottom_nb -> next = top_nb;
 }
 
-void	ra(stack *stack)
+void	ra(t_stack *stack)
 {
 	ft_rotate(stack);
 	ft_printf("ra\n");
 }
 
-void	rb(stack *stack)
+void	rb(t_stack *stack)
 {
 	ft_rotate(stack);
 	ft_printf("rb\n");
 }
 
-void	rr(stack *stacka, stack *stackb)
+void	rr(t_stack *stacka, t_stack *stackb)
 {
 	ft_rotate(stacka);
 	ft_rotate(stackb);

@@ -6,16 +6,16 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:13:32 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 15:09:01 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 08:26:03 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_size(stack *stack)
+int	stack_size(t_stack *stack)
 {
 	int		i;
-	node	*temp;
+	t_node	*temp;
 
 	i = 0;
 	temp = stack -> top;
@@ -27,9 +27,9 @@ int	stack_size(stack *stack)
 	return (i);
 }
 
-node	*get_last_node(stack *stack)
+t_node	*get_last_node(t_stack *stack)
 {
-	node	*last;
+	t_node	*last;
 
 	last = stack -> top;
 	while (last != NULL && last -> next != NULL)
@@ -37,10 +37,10 @@ node	*get_last_node(stack *stack)
 	return (last);
 }
 
-void	add_node_end(stack *stack, int data)
+void	add_node_end(t_stack *stack, int data)
 {
-	node	*new_node;
-	node	*current;
+	t_node	*new_node;
+	t_node	*current;
 
 	new_node = create_new_node(data);
 	if (new_node == NULL)
@@ -56,9 +56,9 @@ void	add_node_end(stack *stack, int data)
 	}
 }
 
-void	display_stack(stack *stack)
+void	display_stack(t_stack *stack)
 {
-	node	*temp;
+	t_node	*temp;
 
 	temp = stack -> top;
 	while (temp != NULL)
@@ -68,10 +68,10 @@ void	display_stack(stack *stack)
 	}
 }
 
-int	find_max(stack *stack)
+int	find_max(t_stack *stack)
 {
 	int		max;
-	node	*current;
+	t_node	*current;
 
 	if (stack == NULL)
 		return (0);

@@ -6,15 +6,15 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:26:01 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 15:01:42 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 10:19:46 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_checksorted(stack *stack)
+int	ft_checksorted(t_stack *stack)
 {
-	node	*temp;
+	t_node	*temp;
 
 	temp = stack -> top;
 	while (temp -> next != NULL)
@@ -25,3 +25,4 @@ int	ft_checksorted(stack *stack)
 	}
 	return (1);
 }
+

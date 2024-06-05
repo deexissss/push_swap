@@ -6,33 +6,36 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:09:25 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 14:55:38 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 14:30:22 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stacklast(stack *stack)
+/*int	ft_stacklast(t_stack *stack)
 {
 	if (stack -> top == NULL)
 		return 0;
-	node *current = stack -> top;
+	t_node *current = stack -> top;
 	while (current -> next != NULL)
 		current = current -> next;
 	return current -> data;
-}
+}*/
 
 int	main(int argc, char **argv)
 {
-	stack	*stack_a;
-	stack	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		i;
 	int		nb;
+	t_node		cheap;
 
-	stack_a = malloc(sizeof(stack));
-	stack_b = malloc(sizeof(stack));
+	stack_a = malloc(sizeof(t_stack));
+	stack_b = malloc(sizeof(t_stack));
 	if (!stack_a || !stack_b)
 		return (1);
+	if (argc <= 1)
+		ft_printf("\n");
 	init_stack(stack_a);
 	init_stack(stack_b);
 	i = 1;
@@ -46,18 +49,21 @@ int	main(int argc, char **argv)
 		}
 		ft_printf("before modification\n");
 		display_stack(stack_a);
-		ft_printf("the max in the list is %i", find_max(stack_a));
-		ft_printf("the min i the list is %i", find_min(stack_a));
-		ft_printf("\napres tri\n stack a \n");
+		pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
+		pb(stack_a, stack_b);
+		move_b_to_a(stack_a, stack_b);
+		ft_printf("\n");
 		display_stack(stack_a);
 		//ft_printf("apres tri\n stack b \n");
                 //display_stack(stack_b);
 
 	}
 	while (!is_empty(stack_a))
-		remove(stack_a);
+		ft_remove(stack_a);
 	while (!is_empty(stack_b))
-		remove(stack_b);
+		ft_remove(stack_b);
 	free(stack_a);
 	free(stack_b);
 	return (0);

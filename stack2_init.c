@@ -6,35 +6,17 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:39:26 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/04 15:07:10 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/05 08:24:59 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(stack *stack)
+void	set_target_b(t_stack *stack1, t_stack *stack2)
 {
-	long	min;
-	node	*current;
-
-	min = LONG_MAX;
-	current = stack -> top;
-	if (stack == NULL)
-		return (0);
-	while (current != NULL)
-	{
-		if (current -> data < min)
-			min = current -> data;
-		current = current -> next;
-	}
-	return (min);
-}
-
-void	set_target_b(stack *stack1, stack *stack2)
-{
-	node	*current1;
-	node	*current2;
-	node	*target_node;
+	t_node	*current1;
+	t_node	*current2;
+	t_node	*target_node;
 	long	best_match_ind;
 
 	while (current2)
@@ -58,7 +40,7 @@ void	set_target_b(stack *stack1, stack *stack2)
 	}
 }
 
-void	init_nodes_2(stack *stack1, stack *stack2)
+void	init_nodes_2(t_stack *stack1, t_stack *stack2)
 {
 	current_index(stack1);
 	current_index(stack2);
