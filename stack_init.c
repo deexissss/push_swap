@@ -12,6 +12,55 @@
 
 #include "push_swap.h"
 
+long	ft_atol(const char *str)
+{
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1; 
+	while (*s == ' ' || *s == '\t' || *s == '\n' || \
+			*s == '\r' || *s == '\f' || *s == '\v')
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (ft_isdigit(*s))
+		result = result * 10 + (*s++ - '0');
+	return (result * sign);
+}
+
+void	append_node(t_stack *stack, int nb)
+{
+	t_node	*node;
+	t_node	*last_node;
+	t_node	*current;
+	
+	current = stack -> top;
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return ;
+	node -> next = NULL;
+	node -> data = nb;
+	if (!(current))
+	{
+		current = node;
+		node -> prev = NULL;
+	}
+	else
+	{
+		last_node = get_last_node(stack);
+		last_node -> next = node;
+		node -> prev = last_node;
+	}
+}
+
+
 t_node	*get_cheapest(t_stack *stack)
 {
 	t_node	*current;
