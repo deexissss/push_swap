@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:09:25 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 14:30:22 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 11:34:24 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,18 @@ int	main(int argc, char **argv)
 		while (i + 1 <= argc)
 		{
 			nb = ft_atoi(argv[i]);
-			add_node_end(stack_a, nb);
+			add_node(stack_a, nb);
 			i++;
 		}
-		ft_printf("before modification\n");
-		display_stack(stack_a);
-		pb(stack_a, stack_b);
-		pb(stack_a, stack_b);
-		pb(stack_a, stack_b);
-		pb(stack_a, stack_b);
-		move_b_to_a(stack_a, stack_b);
-		ft_printf("\n");
-		display_stack(stack_a);
-		//ft_printf("apres tri\n stack b \n");
-                //display_stack(stack_b);
-
+		if (!ft_checksorted(stack_a))
+		{
+			if (stack_size(stack_a) == 2)
+				sa(stack_a);
+			else if (stack_size(stack_a) == 3)
+				sort_three(stack_a);
+			else
+				sort_stacks(stack_a, stack_b);
+		}
 	}
 	while (!is_empty(stack_a))
 		ft_remove(stack_a);

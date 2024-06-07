@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 11:49:29 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 09:46:42 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 11:37:51 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	is_empty(t_stack *stack)
 		return (1);
 	return (0);
 }
-
+/*
 void	add_node(t_stack *stack, int data)
 {
 	t_node	*new_node;
@@ -47,7 +47,7 @@ void	add_node(t_stack *stack, int data)
 	if (!is_empty(stack))
 		new_node -> next = stack -> top;
 	stack -> top = new_node;
-}
+}*/
 
 int	ft_remove(t_stack *stack)
 {

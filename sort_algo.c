@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 09:56:42 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 14:09:37 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 10:31:46 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	move_a_to_b(t_stack *stack1, t_stack *stack2)
 	cheapest = get_cheapest(stack1);
 	if (cheapest -> above_median && cheapest -> target -> above_median)
 		both_rotate(stack1, stack2, cheapest);
-	else if (!(cheapest -> above_median) && !(cheapest -> target -> above_median))
+	else if (!(cheapest -> above_median)
+		&& !(cheapest -> target -> above_median))
 		both_reverse_rotate(stack1, stack2, cheapest);
 	push_preparation(stack1, 'a');
 	push_preparation(stack2, 'b');

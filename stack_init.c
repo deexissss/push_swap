@@ -6,60 +6,39 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:43:42 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 14:38:01 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 11:36:34 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+int     ft_isdigit(int c)
+{
+        if (c >= '0' && c <= '9')
+                return (1);
+        else
+                return (0);
+}
+
+long	ft_str_to_long(const char *str)
 {
 	long	result;
 	int		sign;
 
 	result = 0;
-	sign = 1; 
-	while (*s == ' ' || *s == '\t' || *s == '\n' || \
-			*s == '\r' || *s == '\f' || *s == '\v')
-		s++;
-	if (*s == '-' || *s == '+')
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n')
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (*s == '-')
+		if (*str == '-')
 			sign = -1;
-		s++;
+		str++;
 	}
-	while (ft_isdigit(*s))
-		result = result * 10 + (*s++ - '0');
+	while (ft_isdigit(*str))
+		result = result * 10 + (*str++ - '0');
 	return (result * sign);
 }
-
-void	append_node(t_stack *stack, int nb)
-{
-	t_node	*node;
-	t_node	*last_node;
-	t_node	*current;
-	
-	current = stack -> top;
-	if (!stack)
-		return ;
-	node = malloc(sizeof(t_node));
-	if (!node)
-		return ;
-	node -> next = NULL;
-	node -> data = nb;
-	if (!(current))
-	{
-		current = node;
-		node -> prev = NULL;
-	}
-	else
-	{
-		last_node = get_last_node(stack);
-		last_node -> next = node;
-		node -> prev = last_node;
-	}
-}
-
 
 t_node	*get_cheapest(t_stack *stack)
 {
@@ -67,7 +46,7 @@ t_node	*get_cheapest(t_stack *stack)
 
 	current = stack -> top;
 	if (!stack)
-		return(NULL);
+		return (NULL);
 	while (current)
 	{
 		if (current -> cheapest)
@@ -92,7 +71,7 @@ void	push_preparation(t_stack *stack, char stack_name)
 	{
 		if (stack_name == 'a')
 		{
-			if (cheap -> data  < stack_size(stack) / 2)
+			if (cheap -> data < stack_size(stack) / 2)
 				ra(stack);
 			else
 				rra(stack);
@@ -104,5 +83,26 @@ void	push_preparation(t_stack *stack, char stack_name)
 			else
 				rrb(stack);
 		}
+	}
+}
+
+void	init_stack_a(t_stack *stacka, char **argv)
+{
+	t_node	*current;
+	long	n;
+	int		i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (syntax_error(argv[i]))
+			error(stacka);
+		n = ft_str_to_long(argv[1]);
+		if (n > INT_MAX || n > INT_MIN)
+			error(stacka);
+		if (duplicate_nb(stacka, (int)n))
+			error(stacka);
+		add_node(stacka, (int)n);
+		i++;
 	}
 }

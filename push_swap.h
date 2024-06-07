@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:34:09 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 14:17:57 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 11:32:19 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_node	*create_new_node(int data);
 t_node	*get_last_node(t_stack *stack);
 t_node	*get_cheapest(t_stack *stack);
 void	init_stack(t_stack *stack);
-void	add_node_end(t_stack *stack, int data);
+void	init_stack_a(t_stack *stacka, char **argv);
 void	add_node(t_stack *stack, int data);
 void	move_node(t_stack *stack1, t_stack *stack2);
 void	display_stack(t_stack *stack);
@@ -71,7 +71,17 @@ int		ft_stacklast(t_stack *stack);
 int		is_empty(t_stack *stack);
 int		ft_remove(t_stack *stack);
 
+/*CHECK UTILS*/
+
+int		syntax_error(char *str);
+int		duplicate_nb(t_stack *stack, int nb);
+int		only_digit(const char *str);
+char	**split_nb(const char *str, char c);
+void	free_stack(t_stack *stack);
+void	error(t_stack *stack);
+
 /*SORT*/
+
 void	sort_three(t_stack *stack);
 void	stack_division(t_stack *stack1, t_stack *stack2);
 void	current_index(t_stack *stack);
@@ -82,5 +92,6 @@ void	set_cheapest_nb(t_stack *stack);
 void	min_to_top(t_stack *stack1);
 void	move_a_to_b(t_stack *stack1, t_stack *stack2);
 void	move_b_to_a(t_stack *stack1, t_stack *stack2);
+void	sort_stacks(t_stack *stack1, t_stack *stack2);
 
 #endif

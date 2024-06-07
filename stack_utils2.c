@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:13:32 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 08:26:03 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/07 08:35:20 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_node	*get_last_node(t_stack *stack)
 	return (last);
 }
 
-void	add_node_end(t_stack *stack, int data)
+void	add_node(t_stack *stack, int data)
 {
 	t_node	*new_node;
 	t_node	*current;
