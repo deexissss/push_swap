@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:34:09 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/07 11:32:19 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:00:17 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	move_node(t_stack *stack1, t_stack *stack2);
 void	display_stack(t_stack *stack);
 int		ft_checksorted(t_stack *stack);
 int		stack_size(t_stack *stack);
-int		find_max(t_stack *stack);
-int		find_min(t_stack *stack);
+int		get_max(t_stack *stack);
+int		get_min(t_stack *stack);
 int		ft_stacklast(t_stack *stack);
 int		is_empty(t_stack *stack);
 int		ft_remove(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:39:12 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 10:17:20 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:53:11 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	current_index(t_stack *stack)
 	t_node	*current;
 
 	i = 0;
-	if (!stack)
+	if (!stack || !stack -> top)
 		return ;
 	current = stack -> top;
 	median = stack_size(stack) / 2;
@@ -55,9 +55,10 @@ void	set_target_a(t_stack *stack1, t_stack *stack2)
 				best_match_ind = current2 -> data;
 				target_node = current2;
 			}
+			current2 = current2 -> next;
 		}
 		if (best_match_ind == LONG_MIN)
-			current1 -> target -> data = find_max(stack2);
+			current1 -> target -> data = get_max(stack2);
 		else
 			current1 -> target = target_node;
 		current1 = current1 -> next;
@@ -93,7 +94,7 @@ void	set_cheapest_nb(t_stack *stack)
 	t_node	*current;
 
 	current = stack -> top;
-	if (!stack)
+	if (!stack || !stack -> top)
 		return ;
 	cheapest_val = LONG_MAX;
 	while (current)

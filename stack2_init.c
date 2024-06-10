@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:39:26 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 08:24:59 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:52:28 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	set_target_b(t_stack *stack1, t_stack *stack2)
 			}
 		}
 		if (best_match_ind == LONG_MAX)
-			current2 -> target -> data = find_min(stack1);
+			current2 -> target -> data = get_min(stack1);
 		else
 			current2 -> target = target_node;
 		current2 = current2 -> next;

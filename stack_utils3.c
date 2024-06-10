@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:00:12 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/05 08:27:50 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:51:22 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_stacklast(t_stack *stack)
 	return (current -> data);
 }
 
-int	find_min(t_stack *stack)
+int	get_min(t_stack *stack)
 {
 	long	min;
 	t_node	*current;

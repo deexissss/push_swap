@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 09:56:42 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/07 10:31:46 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:04:11 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	min_to_top(t_stack *stack)
 	t_node	*current;
 
 	current = stack -> top;
-	while (current && current -> data != find_min(stack))
+	while (current && current -> data != get_min(stack))
 	{
-		if (find_min(stack) > stack_size(stack) / 2)
+		if (get_min(stack) > stack_size(stack) / 2)
 			ra(stack);
 		else
 			rra(stack);

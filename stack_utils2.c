@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:13:32 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/07 08:35:20 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 12:51:01 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	display_stack(t_stack *stack)
 	}
 }
 
-int	find_max(t_stack *stack)
+int	get_max(t_stack *stack)
 {
 	int		max;
 	t_node	*current;

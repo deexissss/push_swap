@@ -6,18 +6,18 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 08:43:42 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/07 11:36:34 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 10:08:12 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
-        if (c >= '0' && c <= '9')
-                return (1);
-        else
-                return (0);
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
 
 long	ft_str_to_long(const char *str)
@@ -44,9 +44,9 @@ t_node	*get_cheapest(t_stack *stack)
 {
 	t_node	*current;
 
-	current = stack -> top;
-	if (!stack)
+	if (!stack || !stack -> top)
 		return (NULL);
+	current = stack -> top;
 	while (current)
 	{
 		if (current -> cheapest)
@@ -71,18 +71,19 @@ void	push_preparation(t_stack *stack, char stack_name)
 	{
 		if (stack_name == 'a')
 		{
-			if (cheap -> data < stack_size(stack) / 2)
+			if (cheap -> index < stack_size(stack) / 2)
 				ra(stack);
 			else
 				rra(stack);
 		}
 		if (stack_name == 'b')
 		{
-			if (cheap -> data < stack_size(stack) / 2)
+			if (cheap -> index < stack_size(stack) / 2)
 				rb(stack);
 			else
 				rrb(stack);
 		}
+		current = current -> next;
 	}
 }
 
@@ -98,7 +99,7 @@ void	init_stack_a(t_stack *stacka, char **argv)
 		if (syntax_error(argv[i]))
 			error(stacka);
 		n = ft_str_to_long(argv[1]);
-		if (n > INT_MAX || n > INT_MIN)
+		if (n > INT_MAX || n < INT_MIN)
 			error(stacka);
 		if (duplicate_nb(stacka, (int)n))
 			error(stacka);

@@ -6,7 +6,7 @@
 /*   By: tjehaes <tjehaes@student.42luxembourg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:09:25 by tjehaes           #+#    #+#             */
-/*   Updated: 2024/06/07 11:34:24 by tjehaes          ###   ########.fr       */
+/*   Updated: 2024/06/10 13:16:41 by tjehaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	int		i;
 	int		nb;
-	t_node		cheap;
+	t_node	cheap;
 
 	stack_a = malloc(sizeof(t_stack));
 	stack_b = malloc(sizeof(t_stack));
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	i = 1;
 	if (argc > 1)
 	{
+		//init_stack_a(stack_a, argv);
 		while (i + 1 <= argc)
 		{
 			nb = ft_atoi(argv[i]);
